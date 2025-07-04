@@ -1,0 +1,18 @@
+#add-icon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  z-index: 9999;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0;
+  visibility: hidden; /* Thêm visibility để đảm bảo không clickable khi ẩn */
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+  pointer-events: none; /* Vô hiệu hóa click khi ẩn */
+}
+#add-icon.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto; /* Cho phép click khi hiển thị */
+}
