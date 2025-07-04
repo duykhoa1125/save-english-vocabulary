@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Popup</title>
-    <link rel="stylesheet" href="popup.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-</head>
-<body>
-    <h3>Saved vocabulary <span class="short-key">Ctr+M</span></h3><button id="add-vocab">+</button>
+    <link rel="stylesheet" href="popup.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header-row">
+      <h3>Saved vocabulary <span class="short-key">Ctr+M</span></h3>
+      <button id="add-vocab">+</button>
+    </div>
     <table id="vocab-table">
-        <thead>
-            <tr>
-                <th>Word</th>
-                <th>Meaning</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="vocab-list"></tbody>
+      <thead>
+        <tr>
+          <th>Word</th>
+          <th>Meaning</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="vocab-list"></tbody>
     </table>
     <script src="popup.js"></script>
-</body>
+  </body>
 </html>

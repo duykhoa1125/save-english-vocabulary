@@ -38,3 +38,35 @@ th {
   border-radius: 3px;
   cursor: pointer;
 }
+
+/* Thêm flexbox cho phần tiêu đề và nút */
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+.header-row h3 {
+  margin: 0;
+  font-size: 1.1em;
+  flex: 1;
+}
+#add-vocab {
+  height: 28px;
+  width: 28px;
+  font-size: 1.2em;
+  margin-left: 5px;
+  cursor: pointer;
+  background-color: #91f7a5;
+  border: none;
+  border-radius: 50%;
+
+}
+.short-key {
+  font-size: 0.9em;
+  color: #888;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-left: 10px;
+  padding: 5px;
+}
