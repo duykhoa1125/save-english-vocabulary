@@ -62,3 +62,20 @@ addBtn.onclick = () => {
     );
   }
 };
+
+//dark mode toggle
+
+const darkBtn = document.getElementById("toggle-dark");
+function updateDarkIcon(){
+  darkBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
+}
+darkBtn.onclick = () =>{
+  document.body.classList.toggle("dark-mode");
+  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+  updateDarkIcon();
+}
+//load dark mode state when open popup
+if(localStorage.getItem("darkMode") === "true"){
+  document.body.classList.add("dark-mode");
+}
+updateDarkIcon();

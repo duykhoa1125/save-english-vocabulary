@@ -1,6 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   min-width: 500px;
+  transition: all 0.2s ease-in-out;
 }
 
 table {
@@ -8,16 +9,31 @@ table {
   border-collapse: collapse;
   margin-top: 10px;
 }
+
 th,
 td {
   border: 1px solid #ddd;
   padding: 6px;
-  text-align: left;
+  text-align: center;
+}
+
+.rounded-btn {
+  height: 28px;
+  width: 28px;
+  font-size: 1.2em;
+  cursor: pointer;
+  background-color: #91f7a5;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 th {
   background-color: #c0bcbc;
   font-weight: bold;
+  font-size: 1.2em;
 }
 
 .speak-btn {
@@ -51,17 +67,7 @@ th {
   font-size: 1.1em;
   flex: 1;
 }
-#add-vocab {
-  height: 28px;
-  width: 28px;
-  font-size: 1.2em;
-  margin-left: 5px;
-  cursor: pointer;
-  background-color: #91f7a5;
-  border: none;
-  border-radius: 50%;
 
-}
 .short-key {
   font-size: 0.9em;
   color: #888;
@@ -69,4 +75,21 @@ th {
   border-radius: 5px;
   margin-left: 10px;
   padding: 5px;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+  background: #222;
+  color: #f1f1f1;
+}
+
+body.dark-mode button {
+  background: #333;
+  color: #f1f1f1;
+  border: 1px solid #444;
 }
