@@ -1,6 +1,20 @@
 // Tạo menu ngữ cảnh khi extension được cài đặt
 chrome.runtime.onInstalled.addListener(() => {
   updateBadge();
+  
+  // Khởi tạo các tùy chọn mặc định nếu chưa có
+  chrome.storage.local.get({ options: null }, (result) => {
+    if (!result.options) {
+      chrome.storage.local.set({
+        options: {
+          sourceLanguage: 'en',
+          targetLanguage: 'vi',
+          theme: 'light'
+        }
+      });
+    }
+  });
+  
   chrome.contextMenus.create({
     id: "saveVocab",
     title: "Save '%s'",
@@ -57,9 +71,21 @@ async function saveWordToStorage(word) {
 // API dịch
 // 1000 requests/ngày miễn phí
 const translateWithMyMemory = async (text) => {
+  // Lấy tùy chọn ngôn ngữ từ storage
+  const result = await chrome.storage.local.get({
+    options: {
+      sourceLanguage: 'en',
+      targetLanguage: 'vi'
+    }
+  });
+  
+  const sourceLang = result.options.sourceLanguage;
+  const targetLang = result.options.targetLanguage;
+  
   const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
     text
-  )}&langpair=en|vi`;
+  )}&langpair=${sourceLang}|${targetLang}`;
+  
   const response = await fetch(url);
   const data = await response.json();
   return data.responseData.translatedText;
@@ -67,10 +93,21 @@ const translateWithMyMemory = async (text) => {
 
 async function translateWord(word) {
   try {
+    // Lấy tùy chọn ngôn ngữ từ storage
+    const result = await chrome.storage.local.get({
+      options: {
+        sourceLanguage: 'en',
+        targetLanguage: 'vi'
+      }
+    });
+    
+    const sourceLang = result.options.sourceLanguage;
+    const targetLang = result.options.targetLanguage;
+    
     const response = await fetch(
       `https://api.mymemory.translated.net/get?q=${encodeURIComponent(
         word
-      )}&langpair=en|vi`
+      )}&langpair=${sourceLang}|${targetLang}`
     );
 
     if (!response.ok) {

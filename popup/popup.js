@@ -64,18 +64,44 @@ addBtn.onclick = () => {
 };
 
 //dark mode toggle
-
 const darkBtn = document.getElementById("toggle-dark");
+
 function updateDarkIcon(){
   darkBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
 }
+
 darkBtn.onclick = () =>{
   document.body.classList.toggle("dark-mode");
-  localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+  
+  // Lấy tùy chọn hiện tại
+  chrome.storage.local.get({ options: { theme: 'light' } }, (result) => {
+    const options = result.options;
+    
+    // Cập nhật chủ đề
+    options.theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
+    
+    // Lưu lại tùy chọn
+    chrome.storage.local.set({ options });
+  });
+  
   updateDarkIcon();
 }
-//load dark mode state when open popup
-if(localStorage.getItem("darkMode") === "true"){
-  document.body.classList.add("dark-mode");
-}
-updateDarkIcon();
+
+// Tải trạng thái chủ đề từ tùy chọn
+chrome.storage.local.get({ options: { theme: 'light' } }, (result) => {
+  const theme = result.options.theme;
+  
+  if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.body.classList.add("dark-mode");
+  } else {
+    document.body.classList.remove("dark-mode");
+  }
+  
+  updateDarkIcon();
+});
+
+// Mở trang tùy chọn
+const optionsBtn = document.getElementById("open-options");
+optionsBtn.onclick = () => {
+  chrome.runtime.openOptionsPage();
+};

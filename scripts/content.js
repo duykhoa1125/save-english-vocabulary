@@ -29,7 +29,15 @@ icon.addEventListener("click", function () {
         if (chrome.runtime.lastError) {
           showMessage("Lỗi: " + chrome.runtime.lastError.message, "error");
         } else if (response && response.success) {
-          showMessage(`Đã lưu từ: "${wordToSave}"`, "success");
+          // Lấy ngôn ngữ nguồn từ tùy chọn để hiển thị thông báo phù hợp
+          chrome.storage.local.get({ options: { sourceLanguage: 'en' } }, (result) => {
+            const sourceLang = result.options.sourceLanguage;
+            const messageText = sourceLang === 'vi' ? 
+              `Đã lưu từ: "${wordToSave}"` : 
+              `Saved word: "${wordToSave}"`;
+            
+            showMessage(messageText, "success");
+          });
         } else {
           showMessage("Lỗi khi lưu từ", "error");
         }

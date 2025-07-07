@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn Vocab - Options</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>Learn Vocab - Tùy chọn</h1>
+    
+    <div class="option-section">
+      <h2>Ngôn ngữ</h2>
+      <div class="option-row">
+        <label for="source-language">Ngôn ngữ nguồn:</label>
+        <select id="source-language">
+          <option value="en">Tiếng Anh</option>
+          <option value="vi">Tiếng Việt</option>
+          <option value="fr">Tiếng Pháp</option>
+          <option value="de">Tiếng Đức</option>
+          <option value="es">Tiếng Tây Ban Nha</option>
+          <option value="ja">Tiếng Nhật</option>
+          <option value="ko">Tiếng Hàn</option>
+          <option value="zh">Tiếng Trung</option>
+        </select>
+      </div>
+      <div class="option-row">
+        <label for="target-language">Ngôn ngữ đích:</label>
+        <select id="target-language">
+          <option value="vi">Tiếng Việt</option>
+          <option value="en">Tiếng Anh</option>
+          <option value="fr">Tiếng Pháp</option>
+          <option value="de">Tiếng Đức</option>
+          <option value="es">Tiếng Tây Ban Nha</option>
+          <option value="ja">Tiếng Nhật</option>
+          <option value="ko">Tiếng Hàn</option>
+          <option value="zh">Tiếng Trung</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="option-section">
+      <h2>Giao diện</h2>
+      <div class="option-row">
+        <label for="theme-select">Chủ đề:</label>
+        <select id="theme-select">
+          <option value="light">Sáng</option>
+          <option value="dark">Tối</option>
+          <option value="system">Theo hệ thống</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="option-section">
+      <h2>Xuất dữ liệu</h2>
+      <div class="option-row export-buttons">
+        <button id="export-csv" class="btn">Xuất CSV</button>
+        <button id="export-json" class="btn">Xuất JSON</button>
+        <button id="clear-data" class="btn danger">Xóa tất cả từ vựng</button>
+      </div>
+    </div>
+
+    <div class="status-message" id="status"></div>
+    
+    <div class="button-row">
+      <button id="save-options" class="btn primary">Lưu tùy chọn</button>
+      <button id="reset-options" class="btn">Khôi phục mặc định</button>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
